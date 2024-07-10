@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { fetchData,exerciseOptions } from '../utiis/fetchData';
 import Scrollbar from './Scrollbar';
+import Empty from './Empty';
 
 const Searchbar = ({setExercises,setBodypart,bodypart}) => {
   const url = 'https://exercisedb.p.rapidapi.com/exercises/bodyPartList';
@@ -18,17 +19,18 @@ const Searchbar = ({setExercises,setBodypart,bodypart}) => {
 
   const handleSearch=async()=>{
  if (search){
-  const exerciseData=await fetchData('https://exercisedb.p.rapidapi.com/exercises',exerciseOptions)
-  console.log(exerciseData);
+  const exerciseData=await fetchData(`https://exercisedb.p.rapidapi.com/exercises`,exerciseOptions)
+ 
   const searchedexercises=exerciseData.filter((exercise)=>exercise.name.toLowerCase().includes(search)
-  ||exercise.bodypart.toLowerCase().includes(search)
+  ||exercise.bodyPart.toLowerCase().includes(search)
   ||exercise.target.toLowerCase().includes(search)
-  ||exercise.quipment.toLowerCase().includes(search)
+  ||exercise.equipment.toLowerCase().includes(search)
  );
  setSearch("");
  setExercises(searchedexercises)
  }
   }
+ 
   return (
     <>
     <div>
@@ -44,7 +46,7 @@ const Searchbar = ({setExercises,setBodypart,bodypart}) => {
      onClick={handleSearch}
      className='hover:border-2 border-gray-400 bg-red-600 text-white rounded px-6 py-2 hover:bg-white hover:text-red-600'>Search</button>
         </div>
-        <div className='relative w-[100%] p-5'>
+        <div className='flex flex-row'>
           <Scrollbar 
           data={bodyparts} 
           bodypart={bodypart} 
