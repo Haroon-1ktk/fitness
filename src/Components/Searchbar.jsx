@@ -2,17 +2,16 @@ import React, { useEffect, useState } from 'react'
 import { fetchData,exerciseOptions } from '../utiis/fetchData';
 import Scrollbar from './Scrollbar';
 
-const Searchbar = () => {
+const Searchbar = ({setExercises,setBodypart,bodypart}) => {
   const url = 'https://exercisedb.p.rapidapi.com/exercises/bodyPartList';
   const [search,setSearch]=useState('');
-  const [exercises,setExercises]=useState([]);
   const [bodyparts,setBodyparts]=useState([]);
 
   //we will fetch the bodyparts in useEffect
   useEffect(()=>{
     const fetchExerciseData=async()=>{
       const bodypartsData=await fetchData('https://exercisedb.p.rapidapi.com/exercises/bodyPartList',exerciseOptions);
-      setBodyparts(['all',...bodypartsData])
+      setBodyparts([...bodypartsData])
     }
     fetchExerciseData()
   },[])
@@ -46,7 +45,11 @@ const Searchbar = () => {
      className='hover:border-2 border-gray-400 bg-red-600 text-white rounded px-6 py-2 hover:bg-white hover:text-red-600'>Search</button>
         </div>
         <div className='relative w-[100%] p-5'>
-          <Scrollbar data={bodyparts}/>
+          <Scrollbar 
+          data={bodyparts} 
+          bodypart={bodypart} 
+          setBodypart={setBodypart} 
+          setExercises={setExercises}/>
         </div>
     </div>
     </>

@@ -1,8 +1,10 @@
 import React from 'react'
+import Bodypart from './Bodypart';
+import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
 
-const Scrollbar = ({data}) => {
+const Scrollbar = ({data,bodypart,setBodypart}) => {
   return (
-    <div>
+    <ScrollMenu>
         {data.map(item=>{
            return(
            <>
@@ -10,12 +12,12 @@ const Scrollbar = ({data}) => {
             key={item.id||item}
             title={item.id||item}
             itemId={item.id||item}>
-                {item}
+                <Bodypart item={item} bodypart={bodypart} setBodypart={setBodypart}/>
             </div>
            </>
            )
       })}
-    </div>
+    </ScrollMenu>
   )
 }
 
