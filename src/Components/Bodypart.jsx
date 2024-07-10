@@ -6,9 +6,9 @@ const Bodypart = ({item,bodypart,setBodypart}) => {
     window.scrollTo({ top: 1800, behavior: 'smooth' });
   }
   return (
-  <div className='grid grid-cols-5'>
+  <div className=''>
   <div  
-  className={`cursor-pointer w-64 h-72 ronded hover:scale-105 hover:ease-in-out transition-all ${bodypart === item ? 'border-t-2 border-red-500' : ''}`}
+  className={`cursor-pointer w-36 h-24 ronded hover:scale-105 hover:ease-in-out transition-all ${bodypart === item ? 'border-t-2 border-red-500' : ''}`}
   onClick={handleClick}>
     <MdSportsGymnastics /><span className='font-bold text-xl '>{item}</span> </div>
   </div>

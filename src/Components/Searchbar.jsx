@@ -2,6 +2,27 @@ import React, { useEffect, useState } from 'react'
 import { fetchData,exerciseOptions } from '../utiis/fetchData';
 import Scrollbar from './Scrollbar';
 import Empty from './Empty';
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+
+const responsive = {
+  superLargeDesktop: {
+    breakpoint: { max: 4000, min: 3000 },
+    items: 7
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 5
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 5
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 3
+  }
+};
 
 const Searchbar = ({setExercises,setBodypart,bodypart}) => {
   const url = 'https://exercisedb.p.rapidapi.com/exercises/bodyPartList';
@@ -46,12 +67,14 @@ const Searchbar = ({setExercises,setBodypart,bodypart}) => {
      onClick={handleSearch}
      className='hover:border-2 border-gray-400 bg-red-600 text-white rounded px-6 py-2 hover:bg-white hover:text-red-600'>Search</button>
         </div>
-        <div className='flex flex-row'>
+        <div className='w-[400rem] mt-20'>       
+         <Carousel responsive={responsive}>
           <Scrollbar 
           data={bodyparts} 
           bodypart={bodypart} 
           setBodypart={setBodypart} 
           setExercises={setExercises}/>
+        </Carousel>
         </div>
     </div>
     </>
