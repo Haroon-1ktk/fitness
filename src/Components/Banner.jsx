@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 const Banner = () => {
   return (
     <>
-    <section className='flex flex-col md:flex-row'>
-    <div className='mt-24 ml-12 md:w-[550px]'>
+    <section className='flex md:blck justify-center items-center md:flex-row'>
+    <div className='mt-24 ml-12 md:w-[550px] md:block items-center'>
       <div >
         <h1 className='text-red-600 text-lg pb-1 font-semibold'>Fitness Club</h1>
         <h2 className='font-bold text-xl mb-6 mt-7'>Sweat,Smile and Repeat</h2>

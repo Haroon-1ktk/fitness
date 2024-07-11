@@ -6,11 +6,10 @@ const Bodypart = ({item,bodypart,setBodypart}) => {
     window.scrollTo({ top: 1800, behavior: 'smooth' });
   }
   return (
-  <div className=''>
   <div  
-  className={`cursor-pointer w-36 h-24 ronded hover:scale-105 hover:ease-in-out transition-all ${bodypart === item ? 'border-t-2 border-red-500' : ''}`}
+  className={`cursor-pointer w-36 bg-pink-200 flex flex-col text-emerald-700 py-3 items-center justify-center rounded-md hover:scale-105 hover:ease-in-out transition-all ${bodypart === item ? 'border-t-2 border-red-500' : ''}`}
   onClick={handleClick}>
-    <MdSportsGymnastics /><span className='font-bold text-xl '>{item}</span> </div>
+    <MdSportsGymnastics /><span className='font-bold text-xl '>{item}</span>
   </div>
   )
 }

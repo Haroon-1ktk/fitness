@@ -1,28 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { fetchData,exerciseOptions } from '../utiis/fetchData';
 import Scrollbar from './Scrollbar';
-import Empty from './Empty';
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
 
-const responsive = {
-  superLargeDesktop: {
-    breakpoint: { max: 4000, min: 3000 },
-    items: 7
-  },
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 5
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 5
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 3
-  }
-};
 
 const Searchbar = ({setExercises,setBodypart,bodypart}) => {
   const url = 'https://exercisedb.p.rapidapi.com/exercises/bodyPartList';
@@ -54,27 +33,27 @@ const Searchbar = ({setExercises,setBodypart,bodypart}) => {
  
   return (
     <>
-    <div>
-      <h1 className='text-center mb-6 text-6xl'>Awesome Exercises You<br/>Should Know</h1>
-      <div className='flex justify-center items-center'>
+    <div className='mt-4'>
+      <h1 className='text-center font-bold mb-6 text-xl md:text-6xl'>Awesome Exercises You<br/>Should Know</h1>
+      <div className='flex flex-row justify-center items-center'>
      <input 
      type="text"  
      value={search}
      onChange={(e)=>setSearch(e.target.value.toLowerCase())}
      placeholder='Search Exercises'
-     className='md:w-[800px] w-64 pl-2 bg-white rounded placeholder:text-gray-400 outline-none border-2 border-gray-400 h-10'/>
+     className='md:w-[800px] w-48 pl-2 bg-white rounded placeholder:text-gray-400 outline-none border-2 border-gray-400 h-10'/>
      <button 
      onClick={handleSearch}
      className='hover:border-2 border-gray-400 bg-red-600 text-white rounded px-6 py-2 hover:bg-white hover:text-red-600'>Search</button>
         </div>
-        <div className='w-[400rem] mt-20'>       
-         <Carousel responsive={responsive}>
+        <div className='mt-20'>       
+         
           <Scrollbar 
           data={bodyparts} 
           bodypart={bodypart} 
           setBodypart={setBodypart} 
           setExercises={setExercises}/>
-        </Carousel>
+        
         </div>
     </div>
     </>

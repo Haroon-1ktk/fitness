@@ -4,6 +4,7 @@ import Pagination from '@mui/material/Pagination';
 import { exerciseOptions,fetchData } from '../utiis/fetchData';
 import ExerciseCard from './ExerciseCard';
 import { Link } from 'react-router-dom';
+import Loader from './Loader';
 const Exercises = ({exercises,setExercises,bodypart}) => {
   console.log(exercises)
   const [currentPage,setCurrentpage]=useState(1);
@@ -23,14 +24,15 @@ const Exercises = ({exercises,setExercises,bodypart}) => {
    },[bodypart])
   return (
     <div className='max-w-6xl mx-auto justify-center items-center p-5 mt-10 md:mt-28' id='excercises' name="excercises">
-      <div className='grid grid-cols-2 md:grid-cols-3 gap-3'>
-        {exercises.map((item,index)=>{
+      <div className='flex flex-wrap gap-3'>
+        {exercises.length>0?
+        exercises.map((item,index)=>{
           return(
             <>
            <ExerciseCard item={item} key={index}/>
             </>
           )
-        })}
+        }):<Loader/>}
       </div>
    
     </div>
